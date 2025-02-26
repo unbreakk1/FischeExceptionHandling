@@ -1,4 +1,4 @@
-﻿package de.neuefische.springexceptionhandlingtask;
+package de.neuefische.springexceptionhandlingtask;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,8 @@ public class AnimalControllerTest
     private MockMvc mockMvc;
 
     @Test
-    void testGetAnimalSpecies_withInvalidSpecies_shouldReturnBadRequest() throws Exception {
+    void testGetAnimalSpecies_withInvalidSpecies_shouldReturnBadRequest() throws Exception
+    {
         mockMvc.perform(get("/api/animals/cat")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -46,6 +47,4 @@ public class AnimalControllerTest
                 .andExpect(jsonPath("$.message").value("No Animals found"))
                 .andExpect(jsonPath("$.status").value(HttpStatus.NOT_FOUND.value()));
     }
-
-
 }
