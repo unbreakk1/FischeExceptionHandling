@@ -12,21 +12,21 @@ public class GlobalExceptionHandler
 {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // Returns 400 Bad Request
-    public ErrorMessage handleIllegalArgumentException(IllegalArgumentException ex)
+    public ErrorMessage handleIllegalArgumentException(IllegalArgumentException e)
     {
-        return new ErrorMessage(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
+        return new ErrorMessage(e.getMessage(), HttpStatus.BAD_REQUEST.value());
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND) // Returns 404 Not Found
-    public ErrorMessage handleNoSuchElementException(NoSuchElementException ex)
+    public ErrorMessage handleNoSuchElementException(NoSuchElementException e)
     {
-        return new ErrorMessage(ex.getMessage(), HttpStatus.NOT_FOUND.value());
+        return new ErrorMessage(e.getMessage(), HttpStatus.NOT_FOUND.value());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // Returns 500 Internal Server Error
-    public ErrorMessage handleGenericException(Exception ex)
+    public ErrorMessage handleGenericException(Exception e)
     {
         return new ErrorMessage("An unexpected error occurred", HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
